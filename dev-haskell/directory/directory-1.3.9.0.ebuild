@@ -4,6 +4,7 @@
 EAPI=8
 
 CABAL_FEATURES="lib profile haddock hoogle hscolour test-suite"
+CABAL_CORE_LIB_GHC_PV=""
 
 inherit haskell-cabal
 
