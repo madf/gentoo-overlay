@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="person">
+                <email>gentoo@madf.info</email>
+                <name>Maksym Mamontov</name>
+        </maintainer>
+        <maintainer type="project">
+                <email>proxy-maint@gentoo.org</email>
+                <name>Proxy Maintainers</name>
+        </maintainer>
+        <longdescription lang="en">
+                A time library
+        </longdescription>
+        <upstream>
+                <remote-id type="hackage">time</remote-id>
+                <remote-id type="github">haskell-pkg-janitors/time</remote-id>
+        </upstream>
+</pkgmetadata>
