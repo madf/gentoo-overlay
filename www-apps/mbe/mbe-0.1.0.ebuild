@@ -10,7 +10,7 @@ inherit git-r3 haskell-cabal systemd tmpfiles
 
 DESCRIPTION="A simple static blog generator with convenient editor"
 HOMEPAGE="https://github.com/madf/blog-engine"
-EGIT_REPO_URI="github.com/madf/blog-engine.git"
+EGIT_REPO_URI="https://github.com/madf/blog-engine.git"
 EGIT_COMMIT="${PV}"
 
 LICENSE="BSD"
