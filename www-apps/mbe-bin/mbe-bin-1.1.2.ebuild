@@ -3,8 +3,6 @@
 
 EAPI=8
 
-inherit webapp
-
 DESCRIPTION="A simple static blog generator with convenient editor (binary)"
 HOMEPAGE="https://github.com/madf/blog-engine"
 
@@ -13,6 +11,7 @@ SRC_URI="https://github.com/madf/blog-engine/releases/download/v${PV}/mbe-linux-
 LICENSE="BSD"
 KEYWORDS="~amd64"
 IUSE="vhosts"
+SLOT="0"
 
 DEPEND=""
 RDEPEND="${DEPEND}
@@ -30,15 +29,13 @@ QA_PREBUILT="/usr/bin/mbe"
 QA_PRESTRIPPED="/usr/bin/mbe"
 
 src_install() {
-	webapp_src_preinst
-
 	dobin mbe
 
-	insinto "${MY_HTDOCSDIR}"
+	insinto /usr/share/mbe
 	doins -r static/*
 
 	insinto /etc/mbe
-	newins dist/config.ini config.ini.example
+	doins dist/config.ini
 
 	keepdir /var/lib/mbe
 	fowners mbe:mbe /var/lib/mbe
@@ -46,27 +43,4 @@ src_install() {
 
 	newinitd "${FILESDIR}"/mbe.initd mbe
 	newconfd "${FILESDIR}"/mbe.confd mbe
-
-	webapp_src_install
-}
-
-pkg_postinst() {
-	webapp_pkg_postinst
-
-	elog "Binary installed to: /usr/bin/mbe"
-	elog "Config location: /etc/mbe/"
-	elog "Data directory: /var/lib/mbe"
-	elog ""
-	elog "For webapp-config deployment:"
-	elog "  webapp-config -I -h <hostname> -d <directory> mbe mbe"
-	elog ""
-	elog "This will deploy static files and web server configs."
-	elog "The service itself runs system-wide:"
-	elog "  rc-service mbe start"
-	elog ""
-	elog "Edit /etc/mbe/config.ini before starting the service."
-}
-
-pkg_prerm() {
-	webapp_pkg_prerm
 }
