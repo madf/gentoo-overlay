@@ -13,7 +13,7 @@ description=""
 
 pidfile=${MBE_PID_FILE}
 command=/usr/bin/mbe
-command_args="${mbe_args}"
+command_args="${MBE_OPTS}"
 command_user="${MBE_USER}:${MBE_GROUP}"
 
 depend() {
