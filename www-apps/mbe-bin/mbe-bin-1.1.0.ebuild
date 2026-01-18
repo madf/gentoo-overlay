@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/madf/blog-engine"
 SRC_URI="https://github.com/madf/blog-engine/releases/download/v${PV}/mbe-linux-x86_64.tar.gz"
 
 LICENSE="BSD"
-SLOT="0"
 KEYWORDS="~amd64"
 IUSE="vhosts"
 
