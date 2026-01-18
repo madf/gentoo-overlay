@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="mbe daemon"
+description=""
+
+: ${MBE_PID_FILE:=/run/${RC_SVCNAME}.pid}
+
+: ${MBE_GROUP:=mbe}
+: ${MBE_USER:=mbe}
+: ${MBE_WORK_DIR:=/var/lib/${RC_SVCNAME}}
+
+pidfile=${MBE_PID_FILE}
+command=/usr/bin/mbe
+command_args="${mbe_args}"
+command_user="${MBE_USER}:${MBE_GROUP}"
+
+depend() {
+    need net
+    after nginx
+}
+
+start_pre() {
+    checkpath -d -m 0700 -o ${MBE_USER}:${MBE_GROUP} -q ${MBE_WORK_DIR}
+}
+
+start() {
+    start-stop-daemon --start --exec ${command} --pidfile ${pidfile} --user ${MBE_USER}:${MBE_GROUP} --background --make-pidfile -- --config /etc/${RC_SVCNAME}/config.ini
+}
+
+stop() {
+    start-stop-daemon --stop --exec ${command} --pidfile ${pidfile}
+}
