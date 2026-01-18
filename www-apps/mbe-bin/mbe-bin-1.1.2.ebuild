@@ -8,7 +8,7 @@ inherit webapp
 DESCRIPTION="A simple static blog generator with convenient editor (binary)"
 HOMEPAGE="https://github.com/madf/blog-engine"
 
-SRC_URI="https://github.com/madf/blog-engine/releases/download/v${PV}/mbe-linux-x86_64.tar.gz"
+SRC_URI="https://github.com/madf/blog-engine/releases/download/v${PV}/mbe-linux-x86_64-v${PV}.tar.gz"
 
 LICENSE="BSD"
 KEYWORDS="~amd64"
