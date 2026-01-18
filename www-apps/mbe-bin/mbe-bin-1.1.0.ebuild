@@ -42,7 +42,7 @@ src_install() {
 
 	keepdir /var/lib/mbe
 	fowners mbe:mbe /var/lib/mbe
-	fperms 0750 /var/lib/${PN}
+	fperms 0750 /var/lib/mbe
 
 	newinitd "${FILESDIR}"/mbe.initd mbe
 	newconfd "${FILESDIR}"/mbe.confd mbe
@@ -58,11 +58,11 @@ pkg_postinst() {
 	elog "Data directory: /var/lib/mbe"
 	elog ""
 	elog "For webapp-config deployment:"
-	elog "  webapp-config -I -h <hostname> -d <directory> mbe ${PV}"
+	elog "  webapp-config -I -h <hostname> -d <directory> mbe mbe"
 	elog ""
 	elog "This will deploy static files and web server configs."
 	elog "The service itself runs system-wide:"
-	elog "  rc-service ${PN} start"
+	elog "  rc-service mbe start"
 	elog ""
 	elog "Edit /etc/mbe/config.ini before starting the service."
 }
